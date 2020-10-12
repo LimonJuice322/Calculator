@@ -9,6 +9,11 @@ class Calculator {
     this.previous_operand = '';
     this.current_operand = '';
     this.operation = undefined;
+    this.result = false;
+  }
+
+  set_result() {
+    this.result = true;
   }
 
   delete() {
@@ -18,7 +23,12 @@ class Calculator {
 
   append_number(number) {
     if (this.current_operand == 'NaN') return;
+    if (this.result && !this.operation) {
+      this.clear();
+      this.result = false;
+    }
     if (number == '.' && this.current_operand.includes('.')) return;
+    if (number == '.' && !this.current_operand) this.current_operand = '0' + number.toString();
     this.current_operand = this.current_operand.toString() + number.toString();
   }
 
@@ -31,8 +41,6 @@ class Calculator {
     let computation = Math.sqrt(current);
     if (isNaN(current)) return;
     this.current_operand = computation;
-    this.operation = undefined;
-    this.previous_operand = '';
   }
 
   set_negative() {
@@ -166,7 +174,7 @@ button_delete.addEventListener('click', function() {
 button_equals.addEventListener('click', function() {
   calculator.compute();
   calculator.update_display();
-  calculator.clear();
+  calculator.set_result();
 })
 
 button_all_clear.addEventListener('click', function() {

@@ -22,6 +22,50 @@ body {
   background-color: white;
 }
 
+.prompt-label {
+  display: block;
+  position: absolute;
+  top: 20%;
+  right: calc((100% - 430px) / 2);
+  transform: translate(-30%, -20%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #2F2F2F;
+  padding-top: 1px;
+  padding-left: 4px;
+  color: white;
+  background-color: #191919;
+}
+
+.prompt-label:hover {
+  cursor: pointer;
+  background-color: #2F2F2F;
+}
+
+.prompt-label:hover + .prompt {
+  opacity: 1;
+  transition: 2s;
+}
+
+.prompt {
+  display: block;
+  opacity: 0;
+  position: absolute;
+  top: 15%;
+  right: calc((100% - 1050px) / 2);
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 1.2em;
+  width: 250px;
+  color: white;
+  background-color: #2F2F2F;
+}
+
+.prompt:hover {
+  cursor: default;
+}
+
 .calculator-grid > button {
   cursor: pointer;
   font-size: 2rem;
